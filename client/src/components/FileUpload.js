@@ -29,7 +29,7 @@ const FileUpload = () => {
       const { fileName, filePath } = res.data;
 
       setUploadedFile({ fileName, filePath });
-      
+
     } catch(err){
       if(err.response.status === 500){
         console.log('There was a problem with the server')
@@ -43,7 +43,7 @@ const FileUpload = () => {
 
   return (
     <Fragment>
-      <form>
+      <form onSubmit={onSubmit}>
         <div className="custom-file">
           <input type="file" className="custom-file-input" id="customFile" onChange={onChange}/>
           <label className="custom-file-label" htmlFor="customFile">
