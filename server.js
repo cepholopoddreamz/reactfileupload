@@ -25,6 +25,8 @@ app.post(`/upload`, (req,res) =>{
 
 });
 
+//npx create-react-app client installed the client folder and many files within.
+
 
 app.listen(3001, ()=> console.log('now listening on Port' + PORT));
 
