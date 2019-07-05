@@ -11,10 +11,24 @@ const FileUpload = () => {
   const [ file, setFile ] = useState('');
   const [ filename, setFilename] = useState('Choose File ');
   const [uploadedFile, setUploadedFile] = useState({})
+  //const [uploadArray] = useState([])
+
+  let newFiles = ['']  
+ function checkarray () { 
+    if (uploadedFile){ 
+      newFiles.push(uploadedFile.filePath) 
+    } else {
+      console.log('nothing')
+    }
+  }
+
+  console.log(newFiles)
+
   
   const onChange = e => {
     setFile(e.target.files[0]); // html can take in multiple files but we only want one - so setting the array at 0 fo 1 file
     setFilename(e.target.files[0].name); //tried renaming here but this is just in the text area box
+    
     
   }
 
@@ -35,7 +49,8 @@ const FileUpload = () => {
       const { fileName, filePath } = res.data;
 
       setUploadedFile({ fileName, filePath });
-
+      //uploadArray(filePath)
+      checkarray()
       //newFiles.push(filePath); //this is where i tested storing the file paths. but an array will only work on local storage and you can't requeszt a file list client side only -- so maybe a json object stored in mongodb
       //console.log(newFiles)
 
@@ -47,7 +62,6 @@ const FileUpload = () => {
       }
 
     }
-
   }
 
   function createthingy(array){
@@ -75,10 +89,11 @@ const FileUpload = () => {
     }
   }
 
-const checkarray = uploadedFile ? uploadedFile.filePath : ''
 
-let newFiles = [checkarray]
-  
+
+// let newFiles = [checkarray]
+
+
 createthingy(newFiles)
 
   return (
