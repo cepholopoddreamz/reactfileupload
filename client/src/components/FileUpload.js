@@ -3,14 +3,13 @@ import axios from 'axios';
 import '../spiny.css';
 
 
-
-
-
 const FileUpload = () => {
 
   const [ file, setFile ] = useState('');
   const [ filename, setFilename] = useState('Choose File ');
   const [uploadedFile, setUploadedFile] = useState({})
+  const [ Arrays, setArray ] =
+  useState([]);
   
   const onChange = e => {
     setFile(e.target.files[0]); // html can take in multiple files but we only want one - so setting the array at 0 fo 1 file
@@ -34,9 +33,18 @@ const FileUpload = () => {
 
       const { fileName, filePath } = res.data;
 
+      //console.log(res.data)
+
       setUploadedFile({ fileName, filePath });
 
-      //newFiles.push(filePath); //this is where i tested storing the file paths. but an array will only work on local storage and you can't requeszt a file list client side only -- so maybe a json object stored in mongodb
+      //setArray([filePath]);
+
+
+      // this.setState(prevState => ({
+      //   arrayvar: [...prevState.arrayvar, newelement]
+      // }))
+      //console.log(setArray);
+      //newFiles.push(filePath); //this is where i tested storing the file paths. but an array will only work on local storage and you can't requeszt a file list client sizzzzzzzzzde only -- so maybe a json object stored in mongodb
       //console.log(newFiles)
 
     } catch(err){
@@ -49,6 +57,8 @@ const FileUpload = () => {
     }
 
   }
+
+  //console.log(Arrays.filePath);
 
   function createthingy(array){
   
